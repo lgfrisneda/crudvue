@@ -48,7 +48,7 @@ new Vue ({
 				});
 				Toast.fire({
 					icon: 'success',
-					title: 'Producto guardado exitosamente!'
+					title: 'Libro guardado exitosamente!'
 				})
 			}
 

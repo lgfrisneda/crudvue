@@ -26,6 +26,10 @@
 		<div class="row">
 			<div class="col">
 				<button type="button" class="btn btn-outline-success" @click="addLibro"><i class="fas fa-plus"></i></button>
+				
+			</div>
+			<div class="col text-center">
+				<button type="button" class="btn btn-secondary" @click="searchLibros"><i class="fas fa-search"></i></button>
 			</div>
 			<div class="col text-right">
 				<h5>Total: <span class="badge badge-primary">{{ totalLibros }}</span></h5>

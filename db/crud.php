@@ -45,6 +45,14 @@ switch ($option) {
 		$query->bindValue(':id', $id);
 		$query->execute();
 		break;
+	//SEARCH
+	case 5:
+		$sql = "SELECT * FROM libros WHERE nombre LIKE '%' :nombre '%'";
+		$query = $conn->prepare($sql);
+		$query->bindValue(':nombre', $nombre);
+		$query->execute();
+		$libros = $query->fetchAll(PDO::FETCH_ASSOC);
+		break;
 
 }
 

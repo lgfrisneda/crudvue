@@ -108,11 +108,44 @@ new Vue ({
 				}
 			})
 		},
+		searchLibros:async function(){
+			const { value: formValues } = await Swal.fire({
+				title: 'Buscar libros',
+				html:
+				'<div class="form-group"><input class="form-control" id="nombre" type="text" placeholder="Nombre del libro"></div>',
+				focusConfirm: false,
+				showCancelButton: true,
+				confirmButtonText: 'Buscar',
+				confirmButtonColor: '#3885d6',
+				cancelButtonColor: '#dc3545',
+				preConfirm: () => {
+					return [
+					  this.nombre = document.getElementById('nombre').value,
+					]
+				}
+			})
+
+			if(this.nombre == ""){
+				Swal.fire({
+					type: 'info',
+					title: 'Datos incompletos',
+				})
+			}else{
+				this.resultLibros();
+
+			}
+
+		},
 		listarLibros:function(){
 			axios.post(url, {option:2}).then(res => {
 				this.libros = res.data;
 
 				//console.log(this.libros);
+			});
+		},
+		resultLibros:function(){
+			axios.post(url, {option:5, nombre: this.nombre}).then(res => {
+				this.libros = res.data;
 			});
 		},
 		createLibro:function(){
